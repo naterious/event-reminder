@@ -1,0 +1,53 @@
+{
+  "name": "websocket-node-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/server.js",
+  "scripts": {
+    "start": "node -r dotenv/config build/server.js",
+    "test": "yarn test:unit && yarn test:integration",
+    "test:unit": "mocha 'test/unit/**/*.test.ts'",
+    "test:integration": "mocha -r dotenv/config test/bootstrap-integration.ts 'test/integration/**/*.test.ts'",
+    "build": "tsc",
+    "build:tests": "tsc -p ./test/tsconfig.json",
+    "lint": "yarn lint:ts && yarn lint:test",
+    "lint:ts": "eslint 'src/**/*.ts' --ignore-pattern 'test/**/*.test.ts'",
+    "lint:ts:fix": "yarn lint:ts --fix",
+    "lint:test": "eslint 'test/**/*.test.ts'",
+    "lint:test:fix": "yarn lint:test --fix",
+    "docker": "docker run -d -p 6379:6379 redis"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bull": "^3.16.0",
+    "dotenv": "^8.2.0",
+    "winston": "^3.3.3",
+    "ws": "^7.3.1"
+  },
+  "devDependencies": {
+    "@types/bull": "^3.14.0",
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "5.2.7",
+    "@types/node": "^14.0.14",
+    "@types/sinon": "^9.0.4",
+    "@types/ws": "^7.2.6",
+    "@typescript-eslint/eslint-plugin": "^3.7.1",
+    "@typescript-eslint/parser": "^3.7.1",
+    "casual": "^1.6.2",
+    "chai": "^4.2.0",
+    "eslint": "^7.6.0",
+    "eslint-import-resolver-typescript": "^2.2.0",
+    "eslint-plugin-fp": "^2.3.0",
+    "eslint-plugin-import": "^2.22.0",
+    "mocha": "6.2.3",
+    "sinon": "^9.0.2",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.9.7"
+  },
+  "eslintConfig": {
+    "env": {
+      "mocha": true
+    }
+  }
+}
