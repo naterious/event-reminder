@@ -5,10 +5,10 @@ import casual from "casual";
 import * as infrastructure from "../../../../src/infrastructure/scheduler";
 
 import composeSetEventReminderService from "../../../../src/application/setEventReminder/setEventReminderService";
-import { AddEventReminderToQueue, IEventDetails } from "../../../../src/core/contracts";
+import { AddEventReminderToQueue, IEventDetails, SetEventReminderService } from "../../../../src/core/contracts";
 
 describe("Application - setEventReminderService", () => {
-  let setEventReminderService: any;
+  let setEventReminderService: SetEventReminderService;
   let addEventReminderToQueue: sinon.SinonStubbedMember<AddEventReminderToQueue>;
   let eventDetails: IEventDetails;
 

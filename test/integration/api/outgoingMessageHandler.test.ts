@@ -1,6 +1,5 @@
 import WebSocket from "ws";
 import { expect } from "chai";
-import sinon from "sinon";
 
 describe("Api - outgoingMessageHandler", function() {
   const currentTimeInSeconds = Math.floor(Date.now() / 1000);
@@ -13,7 +12,6 @@ describe("Api - outgoingMessageHandler", function() {
 
   afterEach(() => {
     wsClient.close();
-    sinon.restore();
   });
 
   describe("When an event reminder is successfully returned after time is reached", () => {

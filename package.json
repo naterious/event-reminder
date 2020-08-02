@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node -r dotenv/config build/server.js",
     "test": "yarn test:unit && yarn test:integration",
-    "test:unit": "mocha 'test/unit/**/*.test.ts'",
-    "test:integration": "mocha -r dotenv/config test/bootstrap-integration.ts 'test/integration/**/*.test.ts'",
+    "test:unit": "nyc mocha 'test/unit/**/*.test.ts'",
+    "test:integration": "nyc mocha -r dotenv/config test/bootstrap-integration.ts 'test/integration/**/*.test.ts'",
     "build": "tsc",
     "build:tests": "tsc -p ./test/tsconfig.json",
     "lint": "yarn lint:ts && yarn lint:test",
@@ -15,7 +15,8 @@
     "lint:ts:fix": "yarn lint:ts --fix",
     "lint:test": "eslint 'test/**/*.test.ts'",
     "lint:test:fix": "yarn lint:test --fix",
-    "docker": "docker run -d -p 6379:6379 redis"
+    "docker": "docker run -d -p 6379:6379 redis",
+    "setup": "yarn && yarn docker && yarn build"
   },
   "author": "",
   "license": "MIT",
@@ -41,6 +42,7 @@
     "eslint-plugin-fp": "^2.3.0",
     "eslint-plugin-import": "^2.22.0",
     "mocha": "6.2.3",
+    "nyc": "^15.1.0",
     "sinon": "^9.0.2",
     "ts-node": "^8.10.1",
     "typescript": "^3.9.7"
@@ -49,5 +51,24 @@
     "env": {
       "mocha": true
     }
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "build",
+      "coverage",
+      "database",
+      ".eslintrc",
+      "nyc_output"
+    ],
+    "reporter": [
+      "html",
+      "text-summary"
+    ],
+    "all": true
   }
 }
