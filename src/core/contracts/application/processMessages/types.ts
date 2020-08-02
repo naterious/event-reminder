@@ -1,0 +1,1 @@
+export type ProcessMessagesService = () => void;

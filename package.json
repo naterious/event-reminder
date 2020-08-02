@@ -1,7 +1,7 @@
 {
-  "name": "websocket-node-express",
+  "name": "event-reminder",
   "version": "1.0.0",
-  "description": "",
+  "description": "Event reminder service with a websocket interface to handle clients",
   "main": "build/server.js",
   "scripts": {
     "start": "node -r dotenv/config build/server.js",
