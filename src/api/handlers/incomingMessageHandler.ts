@@ -18,5 +18,4 @@ export default (
   }
 
   dependencies.logger.warn("Received unknown command");
-  return webSocket.send("Received unknown command");
 };
